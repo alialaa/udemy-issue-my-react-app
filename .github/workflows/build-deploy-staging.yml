@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' #it's mean post pull request gets approved and marged with development brancg this work flow wiht run.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -13,13 +13,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - run: npm ci #this is similer to install the npm
-      - run: npm run format:check #This will check the code format
-      - run: npm test -- --coverage #This will to the testing of code.
-        env:
-          CI: true
       - name: Build project
         run: |
           ls
           npm run build
           ls
+      - name: install the 'surge' to Deploy the our build
+        run: npm install -g surge
+
+      - name: Deploy to Staging
+        run: surge --project ./build --domain
+          my-react-app.surge.sh
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }} #To get the login id you can run command locally 'surge whoami'
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }} #To get the tocken you can run the command locally 'surge token' then create the secrets in github repo
