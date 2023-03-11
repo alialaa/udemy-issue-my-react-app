@@ -1,0 +1,18 @@
+on:
+  pull_request:
+    branches: [development]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Nodejs
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: npm ci #this is similer to install the npm
+      - run: npm run format:check #This will check the code format
+      - run: npm test -- --coverage #This will to the testing of code.
+        env:
+          CI: true
