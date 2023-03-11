@@ -19,6 +19,6 @@ jobs:
           CI: true
       - name: Build project
         if: github.event_name == 'push'
-        run: | 
-         npm run build
-         ll
+        run: |
+          npm run build
+          ll
