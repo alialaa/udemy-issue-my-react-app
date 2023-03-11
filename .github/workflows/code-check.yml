@@ -13,6 +13,8 @@ jobs:
           node-version: "12.x"
       - run: npm ci #this is similer to install the npm
       - run: npm run format:check #This will check the code format
+      - name: Arrange the code in format
+        run: npm run format  
       - run: npm test -- --coverage #This will to the testing of code.
         env:
           CI: true
