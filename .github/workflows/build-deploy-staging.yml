@@ -5,6 +5,7 @@ on:
 
 jobs:
   build:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,7 +19,7 @@ jobs:
         env:
           CI: true
       - name: Build project
-        if: github.event_name == 'push'
         run: |
+          ls
           npm run build
-          ll
+          ls
