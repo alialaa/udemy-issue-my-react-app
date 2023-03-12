@@ -13,6 +13,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "16.x"
+      - run: npm test -- --coverage #This will to the testing of code.
+        env:
+          CI: true          
       - name: Build project
         run: |
           ls
