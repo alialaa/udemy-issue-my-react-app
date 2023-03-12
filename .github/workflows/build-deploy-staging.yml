@@ -15,7 +15,7 @@ jobs:
           node-version: "16.x"
       - run: npm test -- --coverage #This will to the testing of code.
         env:
-          CI: true          
+          CI: true
       - name: Build project
         run: |
           ls
