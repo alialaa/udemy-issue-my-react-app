@@ -1,6 +1,6 @@
 name: Test, Build and Deploy the Application using Surge on Dev Infra Along with Cache NPM Dependencies & Artifacts Upload.
 on:
-  push:
+  pull_request:
     branches: [development]
 
 jobs:
