@@ -12,11 +12,11 @@ jobs:
       - name: Cache node_modules
         uses: actions/cache@v1
         with:
-          path: ~/.npm   #this is default npm cache path for linux runner
+          path: ~/.npm #this is default npm cache path for linux runner
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lok.json') }}
           restore-keys: |
-            ${{ runner.os }}-node-             
-          #this is used, if github doesn't find any cache in above key, it will take the older cache from this.    
+            ${{ runner.os }}-node-
+          #this is used, if github doesn't find any cache in above key, it will take the older cache from this.
 
       - name: Use Nodejs
         uses: actions/setup-node@v1
@@ -27,20 +27,20 @@ jobs:
       - run: npm test -- --coverage #This will to the testing of code.
         env:
           CI: true
-      - name: Upload Test Coverage      #it will upload the code test inside the coverage folder named code-coverage in our repo
+      - name: Upload Test Coverage #it will upload the code test inside the coverage folder named code-coverage in our repo
         uses: actions/upload-artifact@v1
         with:
           name: code-coverage
-          path: coverage        
+          path: coverage
 
       - name: Build project
         run: npm run build
-      - name: Upload build folder     #used for artifacts, if build is success, we will have to build artifacts inside our build folder in repo.
+      - name: Upload build folder #used for artifacts, if build is success, we will have to build artifacts inside our build folder in repo.
         uses: actions/upload-artifact@v1
         with:
           name: build
-          path: build          
-      - uses: actions/download-artifact      #it used to download your artifacts in workspace.
+          path: build
+      - uses: actions/download-artifact #it used to download your artifacts in workspace.
 
       - name: install the 'surge' to Deploy the our build
         run: npm install -g surge
