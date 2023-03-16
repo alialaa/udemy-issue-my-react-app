@@ -42,7 +42,7 @@ jobs:
         with:
           name: build
           path: build
-      - uses: actions/download-artifact #it used to download your artifacts in workspace.
+      - uses: actions/download-artifact@v1 #it used to download your artifacts in workspace.
         with:
           name: my-artifact
           path: my-artifact
