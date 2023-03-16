@@ -15,6 +15,7 @@ jobs:
           node-version: "16.x"
       - run: npm ci #this is similer to install the npm
       - run: npm run format:check #This will check the code format
+      - run: npm run format  
       - run: npm test -- --coverage #This will to the testing of code.
         env:
           CI: true

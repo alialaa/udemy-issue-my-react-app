@@ -24,6 +24,7 @@ jobs:
           node-version: "12.x"
       - run: npm ci #this is similer to install the npm
       - run: npm run format:check #This will check the code format
+      - run: npm run format  
       - run: npm test -- --coverage #This will to the testing of code.
         env:
           CI: true
@@ -35,12 +36,16 @@ jobs:
 
       - name: Build project
         run: npm run build
+
       - name: Upload build folder #used for artifacts, if build is success, we will have to build artifacts inside our build folder in repo.
         uses: actions/upload-artifact@v1
         with:
           name: build
           path: build
       - uses: actions/download-artifact #it used to download your artifacts in workspace.
+        with:
+          name: my-artifact
+          path: my-artifact
 
       - name: install the 'surge' to Deploy the our build
         run: npm install -g surge
