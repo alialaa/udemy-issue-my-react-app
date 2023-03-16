@@ -5,7 +5,7 @@ on:
 
 jobs:
   build-dev:
-    if: github.event_name == 'push' #it's mean post pull request gets approved and marged with development branch it workflow will run
+    if: github.event_name == 'pull_request' #it's mean post pull request gets approved and marged with development branch it workflow will run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
