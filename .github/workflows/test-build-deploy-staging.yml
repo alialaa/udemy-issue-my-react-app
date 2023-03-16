@@ -44,7 +44,6 @@ jobs:
           path: build
       - uses: actions/download-artifact@v1 #it used to download your artifacts in workspace.
         with:
-          name: my-artifacts
           path: my-artifacts
 
       - name: install the 'surge' to Deploy the our build
