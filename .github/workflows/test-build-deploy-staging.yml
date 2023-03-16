@@ -42,9 +42,6 @@ jobs:
         with:
           name: build
           path: build
-      - uses: actions/download-artifact@v1 #it used to download your artifacts in workspace.
-        with:
-          path: my-artifacts
 
       - name: install the 'surge' to Deploy the our build
         run: npm install -g surge
