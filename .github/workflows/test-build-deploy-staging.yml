@@ -1,11 +1,11 @@
 name: Test, Build and Deploy the Application using Surge on Dev Infra Along with Cache NPM Dependencies & Artifacts Upload.
 on:
-  pull_request:
+  push:
     branches: [development]
 
 jobs:
   build-dev:
-    if: github.event_name == 'pull_request' #it's mean post pull request gets approved and marged with development branch it workflow will run
+    if: github.event_name == 'push #it's mean post pull request gets approved and marged with development branch it workflow will run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -42,10 +42,6 @@ jobs:
         with:
           name: build
           path: build
-      - uses: actions/download-artifact@v1 #it used to download your artifacts in workspace.
-        with:
-          name: build
-          path: my-artifacts
 
       - name: install the 'surge' to Deploy the our build
         run: npm install -g surge
