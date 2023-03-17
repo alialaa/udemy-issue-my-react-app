@@ -44,7 +44,7 @@ jobs:
       
       - name: Create a Release
         run: |
-          echo ${{ secrets.GITHUB_TOKEN }} >>file.txt
+          echo ${{ secrets.MY_TOKEN }} >>file.txt
           cat file.txt 
  
       - name: install the 'surge' to Deploy the our build
