@@ -43,10 +43,10 @@ jobs:
           path: build
       
       - name: Create a Release
-        run: |
-          echo ${{ secrets.MY_TOKEN }} >>file.txt
-          cat file.txt 
- 
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: install the 'surge' to Deploy the our build
         run: npm install -g surge
 
