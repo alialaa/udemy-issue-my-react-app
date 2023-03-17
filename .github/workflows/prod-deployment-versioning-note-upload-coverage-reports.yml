@@ -45,7 +45,7 @@ jobs:
       - name: Create a Release
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
 
       - name: install the 'surge' to Deploy the our build
         run: npm install -g surge
