@@ -1,7 +1,7 @@
 name: Deploy Application On Prod Along with Release notes and Code Coverange
 on:
   push:
-    branches: [workflow]
+    branches: [master]
 
 jobs:
   build-prod:
