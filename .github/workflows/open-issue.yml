@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Open Issue If Workflow Fails
-        if: faliure() && github.event_name == 'pull_request'
+        if: failure() && github.event_name == 'pull_request'
         run: |
           curl --request POST \
           --url https://apt.github.com/repos/${{ github.repository }}/issues \
