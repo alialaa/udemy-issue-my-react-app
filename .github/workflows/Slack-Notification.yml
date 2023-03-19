@@ -19,12 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     steps:
-      - name: test
-        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
-
       - name: Pull Request open for Dev/Master Branch
         if: github.event_name == 'pull_request' && github.ref == 'refs/heads/master' || github.ref == 'refs/heads/development'
         run: |
