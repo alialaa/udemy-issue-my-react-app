@@ -1,8 +1,9 @@
 name: Notify on Release in Slack
 
 on:
-  release:
-   type: [published]
+  push:
+    branches:
+      - "master"
 
 jobs:
   slack-message:

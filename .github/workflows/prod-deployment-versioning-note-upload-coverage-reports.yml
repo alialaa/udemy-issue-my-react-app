@@ -49,7 +49,7 @@ jobs:
       - name: install the 'surge' to Deploy the our build
         run: npm install -g surge
 
-      - name: Deploy to Staging
+      - name: Deploy to Prod
         run: surge --project ./build --domain
           prod-my-react-app-abhiverma001.surge.sh
         env:
