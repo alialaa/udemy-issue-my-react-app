@@ -33,10 +33,11 @@ jobs:
       - name: Push in Dev/Master Branch
         if: github.event_name == 'push' && github.ref == 'refs/heads/master' || github.ref == 'refs/heads/development'
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in **${{ github.head_ref }}** Branch"}' ${{ secrets.SLACK_WEBHOOK }}
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in branch=$(echo ${GITHUB_REF#refs/heads/})"}' ${{ secrets.SLACK_WEBHOOK }}
           curl -X POST -H 'Content-type: application/json' --data '{"text": "Approved by: ${{ github.event.pull_request.reviews[0].user.login }}"}' ${{ secrets.SLACK_WEBHOOK }}
           curl -X POST -H 'Content-type: application/json' --data '{"text": "Merged by: ${{ github.event.pull_request.merged_by.login }}"}' ${{ secrets.SLACK_WEBHOOK }}
           curl -X POST -H 'Content-type: application/json' --data '{"text": "Pushed by: ${{ github.event.push.user.login }}"}' ${{ secrets.SLACK_WEBHOOK }}
+        id: extract_branch  
 
       - name: Slack Message
         if: github.event_name == 'publish' && github.ref == 'refs/heads/master'
