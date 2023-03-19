@@ -17,6 +17,9 @@ on:
 jobs:
   slack-message:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
     steps:
       - name: test
         run: echo ${{ github.head_ref }}
