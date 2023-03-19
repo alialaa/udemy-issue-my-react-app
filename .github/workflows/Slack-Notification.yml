@@ -21,7 +21,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Pull Request open for Dev/Master Branch
-        if: github.event_name == 'pull_request' && github.ref == 'refs/heads/master' || github.ref == 'refs/heads/development'
+        if: github.event_name == 'pull_request' && github.ref == 'refs/heads/master' || github.ref == 'refs/heads/development' || || github.ref == 'refs/heads/workflow'
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! There is new pull request has open in ${{ github.head_ref }} Branch by User ${{ github.event.pull_request.user.login }}"}' ${{ secrets.SLACK_WEBHOOK }}
 
