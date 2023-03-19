@@ -22,7 +22,9 @@ jobs:
     
     steps:
       - name: test
-        run: echo ${{ github.head_ref }}
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+        
       - name: Pull Request open for Dev/Master Branch
         if: github.event_name == 'pull_request' && github.ref == 'refs/heads/master' || github.ref == 'refs/heads/development'
         run: |
@@ -30,6 +32,7 @@ jobs:
 
       - name: Push in Dev/Master Branch
         if: github.event_name == 'push' && github.ref == 'refs/heads/master' || github.ref == 'refs/heads/development'
+        id: extract_branch
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in **${{ github.head_ref }}** Branch"}' ${{ secrets.SLACK_WEBHOOK }}
           curl -X POST -H 'Content-type: application/json' --data '{"text": "Approved by: ${{ github.event.pull_request.reviews[0].user.login }}"}' ${{ secrets.SLACK_WEBHOOK }}
