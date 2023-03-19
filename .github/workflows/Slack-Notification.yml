@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
+
     steps:
       - name: test
         run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})"
@@ -36,7 +36,7 @@ jobs:
           curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in branch ${{ github.head.ref }}"}' ${{ secrets.SLACK_WEBHOOK }}
           curl -X POST -H 'Content-type: application/json' --data '{"text": "Approved by: ${{ github.event.pull_request.reviews[0].user.login }}"}' ${{ secrets.SLACK_WEBHOOK }}
           curl -X POST -H 'Content-type: application/json' --data '{"text": "Merged by: ${{ github.event.pull_request.merged_by.login }}"}' ${{ secrets.SLACK_WEBHOOK }}
-          curl -X POST -H 'Content-type: application/json' --data '{"text": "Pushed by: ${{ github.event.push.user.login }}"}' ${{ secrets.SLACK_WEBHOOK }} 
+          curl -X POST -H 'Content-type: application/json' --data '{"text": "Pushed by: ${{ github.event.push.user.login }}"}' ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Slack Message
         if: github.event_name == 'publish' && github.ref == 'refs/heads/master'
