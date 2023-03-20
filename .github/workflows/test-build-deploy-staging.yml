@@ -28,7 +28,7 @@ jobs:
       - run: npm test -- --coverage #This will to the testing of code.
         env:
           CI: true
-          
+
       - name: Open Issue If Workflow Fails
         if: failure() && github.event_name == 'pull_request'
         run: |

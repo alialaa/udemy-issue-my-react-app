@@ -1,25 +1,14 @@
-name: Test Code before push to Dev Branch
+name: issue test
 
 on:
-  pull_request:
-    branches: [development]
+  push:
+    branches:
+      - "workflow"
 
 jobs:
-  code-test:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Nodejs
-        uses: actions/setup-node@v1
-        with:
-          node-version: "16.x"
-      - run: npm ci #this is similer to install the npm
-      - run: npm run format #it will arrange the code in correct format.
-      - run: npm run format:check #This will check the code format
-      - run: npm test -- --coverage #This will to the testing of code.
-        env:
-          CI: true
-
       - name: Open Issue If Workflow Fails
         if: failure() && github.event_name == 'pull_request'
         run: |
