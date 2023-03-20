@@ -35,7 +35,7 @@ jobs:
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in Development branch"}' ${{ secrets.SLACK_WEBHOOK }}
 
-      - name: Push in Master Branch
+      - name: Push in Master Branch (Slack Message)
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in Master branch"}' ${{ secrets.SLACK_WEBHOOK }}
