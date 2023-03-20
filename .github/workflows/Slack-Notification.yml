@@ -23,22 +23,22 @@ jobs:
       - name: Pull Request open for Dev Branch (Slack Message)
         if: github.event_name == 'pull_request' && github.ref == 'refs/heads/development'
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! There is new pull request has opened for Development Branch}' ${{ secrets.SLACK_WEBHOOK }}
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! There is new pull request has opened for Development Branch"}' ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Pull Request open for Master Branch (Slack Message)
         if: github.event_name == 'pull_request' && github.ref == 'refs/heads/master'
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! There is new pull request has opened for Master Branch}' ${{ secrets.SLACK_WEBHOOK }}          
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! There is new pull request has opened for Master Branch"}' ${{ secrets.SLACK_WEBHOOK }}          
 
       - name: Push in Dev Branch (Slack Message)
         if: github.event_name == 'push' && github.ref == 'refs/heads/development'
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in Development branch}' ${{ secrets.SLACK_WEBHOOK }}
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in Development branch"}' ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Push in Master Branch
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in Master branch ${{ github.head.ref }}"}' ${{ secrets.SLACK_WEBHOOK }}
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in Master branch"}' ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Slack Message on New Publish
         if: github.event_name == 'publish' && github.ref == 'refs/heads/master'
