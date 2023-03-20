@@ -28,6 +28,20 @@ jobs:
       - run: npm test -- --coverage #This will to the testing of code.
         env:
           CI: true
+          
+      - name: Open Issue If Workflow Fails
+        if: failure() && github.event_name == 'pull_request'
+        run: |
+          curl --request POST \
+          --url https://apt.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+          "title": "Automated issues for commit: ${{ github.sha }}",
+          "body": "This issue was automatically created by the GitHub Actions workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_.",
+          "assignees": ["${{ github.event.pull_request.user.login }}"]     
+          }'
+
       - name: Upload Test Coverage #it will upload the code test inside the coverage folder named code-coverage in our repo
         uses: actions/upload-artifact@v1
         with:
