@@ -2,8 +2,6 @@
 
 ## Project Overview:-
 
-Project:
-
 - In this project we will create a GitHub Repo with Master Branch and a Development Branch
 - Both Branches will be protected, that means no one will be able to push the code into this, if someone want to push the code into Development or Master first they have to open a pull request.
 - Then that pull request have to be approved in the branch by authorized member.
@@ -61,12 +59,12 @@ Project:
 - Create a Release
 - Deploye to Production Server
 - Upload Coverage to Codecov
-- Cache Dependencies'
+- Cache Dependencies
 
 5. Need to configure below notification service also in our workflow
 - Job Failure --> Create Issue
 - Issue Created --> Send a Slack Message
-- Release Created --> Send a Slack Message
+- Release Created --> Send a Slack Message'
 
 
 ## Setting Up our Repository
