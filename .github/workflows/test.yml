@@ -12,8 +12,10 @@ jobs:
       - name: Open Issue If Workflow Fails
         run: |
           curl --request POST \
-          --url https://apt.github.com/repos/${{ github.repository }}/issues \
-          --header 'authorization: Bearer ${{ secrets.GITHHUB_TOKEN }}' \
+          --url https://apt.github.com/repos/${{ 
+          github.repository }}/issues \
+          --header 'authorization: Bearer ${{ 
+          secrets.GITHHUB_TOKEN }}' \
           --header 'content-type: application/json' \
           --data '{
           "title": "Automated issues for commit: ${{ github.sha }}",
