@@ -1,19 +1,21 @@
-name: Open Issue If Workflow Fails
+name: issue test
 
 on:
-  pull_request:
-    branches: [master, development]
+  push:
+    branches:
+      - "workflow"
 
 jobs:
-  issue_create:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Open Issue If Workflow Fails
-        if: failure() && github.event_name == 'pull_request'
         run: |
           curl --request POST \
-          --url https://apt.github.com/repos/${{ github.repository }}/issues \
-          --header 'authorization: Bearer ${{ secrets.GITHHUB_TOKEN }}' \
+          --url https://apt.github.com/repos/${{ 
+          github.repository }}/issues \
+          --header 'authorization: Bearer ${{ 
+          secrets.GITHHUB_TOKEN }}' \
           --header 'content-type: application/json' \
           --data '{
           "title": "Automated issues for commit: ${{ github.sha }}",
