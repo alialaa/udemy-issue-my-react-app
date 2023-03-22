@@ -19,3 +19,4 @@ jobs:
       - run: npm test -- --coverage #This will to the testing of code.
         env:
           CI: true
+

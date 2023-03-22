@@ -28,14 +28,14 @@ jobs:
       - name: Pull Request open for Master Branch (Slack Message)
         if: github.event_name == 'pull_request' && github.ref == 'refs/heads/master'
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! There is new pull request has opened for Master Branch"}' ${{ secrets.SLACK_WEBHOOK }}          
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! There is new pull request has opened for Master Branch"}' ${{ secrets.SLACK_WEBHOOK }}
 
       - name: Push in Dev Branch (Slack Message)
         if: github.event_name == 'push' && github.ref == 'refs/heads/development'
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in Development branch"}' ${{ secrets.SLACK_WEBHOOK }}
 
-      - name: Push in Master Branch
+      - name: Push in Master Branch (Slack Message)
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text":"Hi Folks! Code Push is done in Master branch"}' ${{ secrets.SLACK_WEBHOOK }}

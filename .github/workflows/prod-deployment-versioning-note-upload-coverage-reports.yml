@@ -41,7 +41,7 @@ jobs:
         with:
           name: build
           path: build
-      - name: upload coverage reports to Codecov  #Upload coverage report on Codecov
+      - name: upload coverage reports to Codecov #Upload coverage report on Codecov
         run: npx codecov
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
