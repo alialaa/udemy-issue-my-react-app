@@ -42,7 +42,7 @@ jobs:
           name: build
           path: build
 
-      - name: Create a Release
+      - name: Create a Release t
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
