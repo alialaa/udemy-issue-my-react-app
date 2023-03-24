@@ -43,7 +43,7 @@ jobs:
           path: build
 
       - name: Create a Release
-        uses: actions/create-release@v1
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
