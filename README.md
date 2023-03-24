@@ -338,9 +338,9 @@ jobs:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }} #To get the login id you can run command locally 'surge whoami'.
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }} #To get the tocken you can run the command locally 'surge token' then create the secrets in github repo
 ```
--git add A
--git commit -m"feat: some feature"
--git push
+- git add A
+- git commit -m"feat: some feature"
+- git push
 
 - for testing purpose you can delete the protection rule for your master branch for time being only, later you can enable it again.
 - once this workflow is run, check the release option in your repo and check the notes, also refer the workflow output
