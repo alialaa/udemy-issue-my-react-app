@@ -61,3 +61,16 @@ jobs:
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }} #To get the login id you can run command locally 'surge whoami'.
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }} #To get the tocken you can run the command locally 'surge token' then create the secrets in github repo
+
+      - name: Open Issue If Workflow Fails
+        if: failure() && github.event_name == 'push'
+        run: |
+          curl --request POST \
+          --url https://apt.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+          "title": "Automated issues for commit: ${{ github.sha }}",
+          "body": "This issue was automatically created by the GitHub Actions workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_.",
+          "assignees": ["${{ github.event.pull_request.user.login }}"]     
+          }'
