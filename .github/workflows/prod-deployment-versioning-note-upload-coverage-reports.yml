@@ -43,12 +43,9 @@ jobs:
           path: build
 
       - name: Create Github Release
-        uses: actions/create-release@v1
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
 
       - name: upload coverage reports to Codecov #Upload coverage report on Codecov
         run: npx codecov
