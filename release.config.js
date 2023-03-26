@@ -1,6 +1,6 @@
 module.exports = {
   branches: "master",
-  repositoryUrl: "https://github.com/abhiverma001/my-react-app/",
+  repositoryUrl: "https://github.com/alialaa/udemy-issue-my-react-app",
   plugins: [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
